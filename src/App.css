@@ -1,41 +1,168 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+* {
+  margin: 0;
+  overflow: hidden;
+  color: white;
+  --text-color: hsl(0, 0%, 10%);
+  --bg-color: hsla(0, 0%, 10%, 0.6);
+  --border-color: hsla(0, 0%, 10%, 0.6);
+  cursor: default;
+}
+
+.App-background {
+  position: absolute;
+  background-repeat: repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.App-background > img.light_theme {
+  filter: brightness(0.7);
+}
+.App-background > img.dark-theme {
+  --bg-color: hsla(0, 0%, 80%, 0.6);
+  --border-color: hsla(0, 0%, 80%, 0.6);
+}
+
+.App:not(.App-background) {
+  display: flex;
+  justify-content: center;
+}
+.App-content {
+  margin-top: 4rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+}
+
+.additional-city-data {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 7rem);
+}
+
+.location-form * {
+  color: hsl(0,0%, 10%);
+}
+.location-form {
+  width: 15vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.location-form input {
+  width: 100%;
+  padding: 0.5rem;
   text-align: center;
+  border: none;
+  border-left: 4px solid var(--border-color);
+  background-color: var(--bg-color);
+  color: white;
+  border-radius: 0.5rem 0 0 0.5rem;
+  font-size: 1rem;
+  font-family: 'montserrat', sans-serif;
+}
+.location-form input:focus {
+  outline: none;
+}
+.location-form button {
+  padding: 0.5rem;
+  padding-right: 1.5rem;
+  border: none;
+  border-left: 4px solid var(--border-color);
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 1rem;
+  color: white;
+  background-color: var(--bg-color);
+  font-weight: 600;
+  font-family: 'montserrat', sans-serif;
+  cursor: pointer;
+}
+.city-header-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-color);
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 4px solid var(--border-color);
+  backdrop-filter: blur(1rem);
+  gap: 1rem;
+}
+.city-header-data > *:not(button):not(.additional-city-data) {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.additional-city-data > * > *:nth-child(1) {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.city-header-data > button {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-family: 'montserrat', sans-serif;
+  background-color: transparent;
+  cursor: pointer !important;
+  border: none;
+}
+.city-header-data > button > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid #ccc;
+  width: 20vw;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.weather-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weather-data-content {
+  display: flex;
+  flex-direction:row ;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.advanced-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0.5rem;
+  background-color: var(--bg-color);
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 4px solid var(--border-color);
+  backdrop-filter: blur(1rem);
+}
+.basic-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-color);
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 4px solid var(--border-color);
+  backdrop-filter: blur(1rem);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
+.advanced-info>*>*:nth-child(1) {
+  font-weight: 600;
+  font-size: 1.1rem;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.fetched-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
